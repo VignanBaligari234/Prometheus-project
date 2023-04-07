@@ -1,0 +1,21 @@
+global:
+  scrape_interval: 15s # Set the scrape interval to every 15 seconds. The default is every 1 minute.
+
+scrape_configs:
+  - job_name: 'node'
+    static_configs:
+      - targets: ['node-exporter1:9100']
+        labels:
+          group: 'monitoring_node_ex1'
+      - targets: ['node-exporter2:1900']
+        labels:
+          group: 'monitoring_node_ex2'
+      - targets: ['node-exporter3:1900']
+        labels:
+          group: 'monitoring_node_ex3'
+          
+  - job_name: 'pythonserver'
+    static_configs:
+      - targets: ['pythonserver:8080']
+        labels:
+          group: 'monitoring_python'
